@@ -296,6 +296,33 @@ $('.form-checker').val(lines.join("\n"));
   
 	
 </script>
+	    <script type="text/javascript">
+
+    function showNotification(notificationElementId) {
+        let notification = document.getElementById(notificationElementId)
+        notification.className = "show";
+        setTimeout(() => { 
+          notification.className = notification.className.replace("show", ""); 
+        }, 2900);
+    }
+    
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+    }
+
+    const buttonSwitchTheme = document.getElementById('btnSwitchTheme');
+    buttonSwitchTheme.checked = currentThemeSetting === 'dark';
+    buttonSwitchTheme.addEventListener("click", () => {
+        const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+        setTheme(newTheme);        
+    });
+
+    const links = document.getElementsByClassName('self-link');
+    Array.from(links).forEach(link => {
+      link.href = link.href.replace('{link}', window.location.href);
+    });
+
+  </script>
 
   </body>
 </html>
